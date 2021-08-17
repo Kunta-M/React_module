@@ -6,9 +6,8 @@ function App() {
 
   return (
     <div>
-      <Cars/>
       <Form/>
-
+      <Cars/>
     </div>
   );
 }
