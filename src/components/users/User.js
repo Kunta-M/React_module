@@ -13,8 +13,7 @@ export default function User({item}) {
   return (
     <div>
 
-        {item.id}. {item.name}
-            <Posts items={post}/>
+        <Posts items={post}/>
 
     </div>
   );
