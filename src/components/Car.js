@@ -1,4 +1,4 @@
-import {deleteCars} from "../services/cars.service";
+import {deleteCars, saveCars} from "../services/cars.service";
 
 export default function Car({item }) {
 
@@ -7,7 +7,7 @@ export default function Car({item }) {
         <p>
             {item.id}. Model - {item.model} Price - {item.price} Year - {item.year}
             <button onClick={()=>{deleteCars(item.id)}}>Delete</button>
-            <button>Edit</button>
+            <button onClick={()=>{saveCars(item)}}>Edit</button>
         </p>
 
     </div>
