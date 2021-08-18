@@ -1,6 +1,6 @@
 import './App.css';
-import CarsForm from "./components/CarsForm";
-import Cars from "./components/Cars";
+import CarsForm from "./components/cars/CarsForm";
+import Cars from "./components/cars/Cars";
 
 function App() {
 

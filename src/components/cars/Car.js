@@ -1,4 +1,4 @@
-import {deleteCars, saveCars} from "../services/cars.service";
+import {deleteCars, saveCars} from "../../services/cars.service";
 
 export default function Car({item }) {
 

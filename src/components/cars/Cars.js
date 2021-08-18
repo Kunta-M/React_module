@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getCars} from "../services/cars.service";
+import {getCars} from "../../services/cars.service";
 import Car from "./Car";
 
 export default function Cars() {
