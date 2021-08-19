@@ -4,16 +4,17 @@ import Posts from "./Posts";
 
 export default function User({item}) {
 
-    let [post, setPost] = useState([]);
+    let [posts, setPosts] = useState([]);
+    let [post, setPost] = useState(null);
 
     useEffect(()=>{
-        getPosts(item.id).then(value => setPost([...value]))
+            getPosts(item.id).then(value => setPosts([...value]))
     }, [item.id]);
 
   return (
     <div>
 
-        <Posts items={post}/>
+        <Posts items={posts}/>
 
     </div>
   );
