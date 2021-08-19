@@ -5,7 +5,6 @@ import Posts from "./Posts";
 export default function User({item}) {
 
     let [posts, setPosts] = useState([]);
-    let [post, setPost] = useState(null);
 
     useEffect(()=>{
             getPosts(item.id).then(value => setPosts([...value]))
