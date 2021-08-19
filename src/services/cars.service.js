@@ -17,11 +17,23 @@ const getCars = () =>{
         .then(value => value.json());
 }
 
-const deleteCars = (id) => {
-    fetch(url+'/'+id, {
+const deleteCarsService = (id) => {
+    return fetch(url+'/'+id , {
         method: 'DELETE',
-    });
+    })
 }
 
-export {saveCars, getCars, deleteCars};
+const editCar = (car) =>{
+    fetch(url+'/'+car.id, {
+        method: 'PUT',
+        body: JSON.stringify(car),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+}
+
+export {saveCars, getCars, deleteCarsService, editCar};
 
