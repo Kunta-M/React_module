@@ -18,13 +18,13 @@ const getCars = () =>{
 }
 
 const deleteCarsService = (id) => {
-    return fetch(url+'/'+id , {
+    return fetch(url + '/' +id , {
         method: 'DELETE',
     })
 }
 
-const editCar = (car) =>{
-    fetch(url+'/'+car.id, {
+const editCar = (car, id) =>{
+    fetch(url + '/' + id, {
         method: 'PUT',
         body: JSON.stringify(car),
         headers: {

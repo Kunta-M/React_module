@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {getCars, deleteCarsService} from "../../services/cars.service";
+import {getCars, deleteCarsService, editCar} from "../../services/cars.service";
 import Car from "./Car";
 
-export default function Cars() {
+export default function Cars(carForm) {
 
     let [car, setCar] = useState([]);
 
@@ -12,8 +12,20 @@ export default function Cars() {
 
     const deleteCars = (id) =>{
         deleteCarsService(id).then(value => console.log(value));
-            let filterCars = car.filter(value => value.id !== id);
-            setCar([...filterCars])
+            car.splice(1, 1);
+            setCar([...car])
+    }
+
+    let [model, setModel] = useState('');
+    let [price, setPrice] = useState('');
+    let [year, setYear] = useState('');
+
+    const data = {model: model,
+                  price: price,
+                  year: year}
+
+    let addCar = (id) =>{
+
     }
 
     return (
@@ -22,6 +34,7 @@ export default function Cars() {
             car.map(value => <Car item={value}
                                   key={value.id}
                                   deleteCars={deleteCars}
+                                  addCar={addCar}
                             />)
         }
     </div>

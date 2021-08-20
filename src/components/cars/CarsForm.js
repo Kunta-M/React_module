@@ -17,6 +17,8 @@ export default function CarsForm() {
       saveCars(carForm);
     }
 
+    let props = carForm;
+
     return (
     <div>
       <form onSubmit={onSubmitForm}>
