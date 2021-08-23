@@ -1,6 +1,4 @@
-import {editCar} from "../../services/cars.service";
-
-export default function Car({item, deleteCars, addCar}) {
+export default function Car({item, deleteCars, onEditCar}) {
 
     const onClickDelete = (e) =>{
        e.preventDefault();
@@ -8,8 +6,9 @@ export default function Car({item, deleteCars, addCar}) {
 
     const onClickEdit = (e) =>{
         e.preventDefault();
-        addCar(item.id)
+        onEditCar(item.id)
     }
+
   return (
     <div>
             <p>

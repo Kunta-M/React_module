@@ -1,33 +1,52 @@
-import {createRef, useState} from "react";
-import {editCar, saveCars} from "../../services/cars.service";
+import {useState} from "react";
+import {editCarService, saveCars} from "../../services/cars.service";
 import React from "react";
-import Car from "./Car";
+import Cars from "./Cars";
 
 export default function CarsForm() {
 
-    let [carForm, setCarForm] = useState({model:'', price:'', year:''});
+    let [model, setModel] = useState('');
+    let [price, setPrice] = useState('');
+    let [year, setYear] = useState('');
 
-    const formChange = (e) =>{
-      setCarForm({...carForm, [e.target.name]: e.target.value});
-        console.log(carForm)
+    const onModelInput = (e) =>{
+        setModel(e.target.value)
     }
-    
+
+    const onPriceInput = (e) => {
+        setPrice(e.target.value)
+    }
+
+    const onYearInput = (e) => {
+        setYear(e.target.value)
+    }
+
+    let carForm = {
+        model: model,
+        price: price,
+        year: year
+    }
     const onSubmitForm = (e) => {
-      e.preventDefault();
-      saveCars(carForm);
+        saveCars(carForm)
     }
 
-    let props = carForm;
+    let onEditCar = (id) =>{
+        editCarService({model, price, year}, id)
+            .then((json) => {
+                console.log(json)
+            });
+    }
 
     return (
     <div>
       <form onSubmit={onSubmitForm}>
-        <input type="text" name={'model'} value={carForm.model} onChange={formChange} />
-        <input type="text" name={'price'} value={carForm.price} onChange={formChange} />
-        <input type="number" name={'year'} value={carForm.year} onChange={formChange} />
-        <input type="submit" value={'submit'}/>
-        <input type="submit" value={'submit chosen car'}/>
+        <input type="text" name={'model'} value={model} onInput={onModelInput} />
+        <input type="text" name={'price'} value={price} onInput={onPriceInput} />
+        <input type="number" name={'year'} value={year} onInput={onYearInput} />
+        <input type="submit" value={'Submit'}/>
       </form>
+
+        <Cars onEditCar={onEditCar}/>
     </div>
   );
 }

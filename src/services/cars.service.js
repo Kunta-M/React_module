@@ -1,4 +1,4 @@
-const url = 'http://195.72.146.25/api/v1/cars'
+const url = 'http://91.201.233.14/api/v1/cars'
 
 const saveCars = (car) =>{
     fetch(url, {
@@ -9,7 +9,6 @@ const saveCars = (car) =>{
         },
     })
         .then((response) => response.json())
-        .then((json) => console.log(json));
 }
 
 const getCars = () =>{
@@ -23,17 +22,16 @@ const deleteCarsService = (id) => {
     })
 }
 
-const editCar = (car, id) =>{
+const editCarService = (id, {model, price, year}) =>{
     fetch(url + '/' + id, {
         method: 'PUT',
-        body: JSON.stringify(car),
+        body: JSON.stringify({model, price, year}),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
     })
         .then((response) => response.json())
-        .then((json) => console.log(json));
 }
 
-export {saveCars, getCars, deleteCarsService, editCar};
+export {saveCars, getCars, deleteCarsService, editCarService};
 
