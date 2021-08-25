@@ -1,4 +1,4 @@
-const url = 'http://195.72.146.25/api/v1/cars'
+const url = 'http://91.201.233.14/api/v1/cars'
 
 const getCars = () =>{
     return fetch(url)
@@ -18,7 +18,7 @@ const createCars = (car) =>{
 }
 
 const updateCars = (car) =>{
-    fetch(url+'/'+car.id, {
+    fetch(url + '/' + car.id, {
         method: 'PATCH',
         body: JSON.stringify(car),
         headers: {

@@ -1,15 +1,33 @@
 import Cars from "./Cars";
 import Car from "./Car";
+import {useEffect, useState} from "react";
+import {getCars} from "../services/car.api.service";
 
-export default function UpdateCarForm({car}) {
+export default function UpdateCarForm() {
+
+    const [cars, setCars] = useState([]);
+    const [chosenCar, setChosenCar] = useState({model:'', price:'', year:''});
+
+    useEffect(() =>{
+        getCars().then(value => setCars([...value]))
+    }, [cars]);
+
+    const onSelectCar = (e) =>{
+        const selectCar = cars.find(car => car.id === e.target.value)
+        setChosenCar(selectCar)
+    }
 
   return (
     <div>
         <form action="">
-            <select name={'Choose car'} placeholder={'model'}>
-                <div>
-
-                </div>
+            <select onSubmit={onSelectCar}>
+                {
+                    cars.map(item => <option
+                                            value={item.id}
+                                            key={item.id}>
+                                            {item.model} - {item.price} - {item.year}
+                                     </option>)
+                }
             </select>
         </form>
 
