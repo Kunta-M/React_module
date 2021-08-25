@@ -22,10 +22,10 @@ const deleteCarsService = (id) => {
     })
 }
 
-const editCarService = (id, {model, price, year}) =>{
-    fetch(url + '/' + id, {
+const editCarService = (car) =>{
+    fetch(url + '/' + car.id, {
         method: 'PUT',
-        body: JSON.stringify({model, price, year}),
+        body: JSON.stringify(car),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },

@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
-import {getCars, deleteCarsService, saveCars, editCarService} from "../../services/cars.service";
+import {getCars, deleteCarsService} from "../../services/cars.service";
 import Car from "./Car";
 
-export default function Cars() {
+export default function Cars({setCarForm}) {
 
     let [car, setCar] = useState([]);
 
     useEffect(() =>{
-        getCars().then(value => {setCar([...value])});
+        getCars().then(value => setCar([...value]));
     }, []);
 
     const deleteCars = (id) => {
@@ -22,6 +22,7 @@ export default function Cars() {
             car.map(value => <Car item={value}
                                   key={value.id}
                                   deleteCars={deleteCars}
+                                  setCarForm={setCarForm}
                             />)
         }
     </div>

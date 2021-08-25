@@ -1,4 +1,4 @@
-export default function Car({item, deleteCars, onEditCar}) {
+export default function Car({item, deleteCars, setCarForm}) {
 
     const onClickDelete = (e) =>{
        e.preventDefault();
@@ -6,7 +6,7 @@ export default function Car({item, deleteCars, onEditCar}) {
 
     const onClickEdit = (e) =>{
         e.preventDefault();
-        onEditCar(item.id)
+        setCarForm(item)
     }
 
   return (
