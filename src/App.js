@@ -10,21 +10,22 @@ import reducer from "./reducers/reducer";
 
 export default function App() {
 
-  let [{a, b, c}, dispatch] = useReducer(reducer, {a: 0, b: 0, c: 0});
+    const initialState = {a:0, b:0, c:0}
+  let [{a, b, c}, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div>
-      <h3>{a}</h3>
-      <button onClick={() =>{dispatch({obj:1, action: '+'})}}>+</button>
-      <button onClick={() =>{dispatch({obj:1, action: '-'})}}>-</button>
+      <h3>state1 - {a}</h3>
+      <button onClick={() => dispatch({obj: '1', type: 'increment'})}>+</button>
+      <button onClick={() => dispatch({obj: '1', type: 'decrement'})}>-</button>
 
-      <h3>{b}</h3>
-      <button onClick={() =>{dispatch({obj:2, action: '+'})}}>+</button>
-      <button onClick={() =>{dispatch({obj:2, action: '-'})}}>-</button>
+      <h3>state2 - {b}</h3>
+      <button onClick={() => dispatch({obj: '2', type: 'increment'})}>+</button>
+      <button onClick={() => dispatch({obj: '2', type: 'decrement'})}>-</button>
 
-      <h3>{c}</h3>
-      <button onClick={() =>{dispatch({obj:3, action: +10})}}>+</button>
-      <button onClick={() =>{dispatch({obj:3, action: -4})}}>-</button>
+      <h3>state3 - {c}</h3>
+      <button onClick={() => dispatch({obj: '3', type: 'increment'})}>+</button>
+      <button onClick={() => dispatch({obj: '3', type: 'decrement'})}>-</button>
 
     </div>
   );
