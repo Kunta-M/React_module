@@ -1,7 +1,7 @@
 import Cars from "./Cars";
 import Car from "./Car";
 import {useEffect, useState} from "react";
-import {getCars} from "../services/car.api.service";
+import {createCars, getCars, updateCars} from "../services/car.api.service";
 
 export default function UpdateCarForm() {
 
@@ -15,6 +15,12 @@ export default function UpdateCarForm() {
     const onSelectCar = (e) =>{
         const selectCar = cars.find(car => car.id === e.target.value)
         setChosenCar(selectCar)
+    }
+
+    const updateChosenCar = () =>{
+        chosenCar.id
+        ? updateCars(chosenCar)
+        : createCars(chosenCar)
     }
 
   return (
@@ -32,9 +38,9 @@ export default function UpdateCarForm() {
         </form>
 
         <form className={'update-form'}>
-            <input type="text" name={'model'}/>
-            <input type="text" name={'price'}/>
-            <input type="number" name={'year'}/>
+            <input type="text" name={'model'} onChange={updateChosenCar}/>
+            <input type="text" name={'price'} onChange={updateChosenCar}/>
+            <input type="number" name={'year'} onChange={updateChosenCar}/>
 
             <input type="submit" value={'Update'}/>
         </form>
