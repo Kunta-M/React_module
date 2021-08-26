@@ -16,7 +16,7 @@ export default function App() {
   return (
     <div>
         <h3>state 1 - {value}</h3>
-        <button onClick={() => dispatch({obj: '1', action: '+'})}>add 10</button>
+        <button onClick={() => dispatch({obj: '1', action: '+'})}>plus 10</button>
         <button onClick={() => dispatch({obj: '1', action: '-'})}>minus 2</button>
     </div>
   );
