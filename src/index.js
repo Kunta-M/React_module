@@ -3,27 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-
-const reducer = (state = {movies: [], genres: []}, action) =>{
-    switch (action.type){
-        case 'GET_MOVIES':
-            return {...state, movies: [...action.payload]};
-        case 'GET_GENRES':
-            return {...state, genres: [...action.payload]};
-        default:
-            return state;
-    }
-}
-
-let store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={store}>
           <App />
-      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
